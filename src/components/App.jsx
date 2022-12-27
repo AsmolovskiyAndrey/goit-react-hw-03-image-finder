@@ -3,6 +3,8 @@ import { Component } from 'react';
 import { Searchbar } from './Searchbar/Searchbar';
 import css from './App.module.css';
 import { ImageGallery } from './ImageGallery/ImageGallery';
+import { Button } from './Button/Button';
+import { Loader } from './Loader/Loader';
 
 export class App extends Component {
   state = {
@@ -12,6 +14,7 @@ export class App extends Component {
     loading: false,
     notFound: false,
     error: false,
+    loadMore: false,
   };
 
   async componentDidUpdate(prevProps, prevState) {
@@ -21,8 +24,13 @@ export class App extends Component {
         this.setState({ loading: true });
 
         const newSub = await fetchImages(search, page);
-        this.setState({ subject: newSub });
-        console.log(newSub.length);
+        this.setState(prevState => ({
+          subject: [...prevState.subject, ...newSub],
+        }));
+
+        newSub.length === 12
+          ? this.setState({ loadMore: true })
+          : this.setState({ loadMore: false });
 
         this.setState({ loading: false });
 
@@ -38,14 +46,21 @@ export class App extends Component {
   searchSubject = event => {
     const normaliseValue = event.toLowerCase().trim();
     this.setState({ search: normaliseValue });
+    this.setState({ subject: [] });
+    this.setState({ page: 1 });
     this.setState({ notFound: false });
+    this.setState({ loadMore: false });
+  };
+
+  loadMore = () => {
+    this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 
   render() {
     return (
       <div className={css.App}>
         <Searchbar onSubmit={this.searchSubject} />
-        {this.state.loading && <h2>Loading...</h2>}
+        {this.state.loading && <Loader />}
         {this.state.notFound && <h2>Nothing found for your search...</h2>}
         {this.state.error && (
           <h2>Something went wrong, try reloading the page</h2>
@@ -53,6 +68,7 @@ export class App extends Component {
         {this.state.subject && (
           <ImageGallery galleryItems={this.state.subject} />
         )}
+        {this.state.loadMore && <Button loadMore={this.loadMore} />}
       </div>
     );
   }

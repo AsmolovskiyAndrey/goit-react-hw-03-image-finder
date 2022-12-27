@@ -1,10 +1,16 @@
 import React from 'react';
+import css from './ImageGalleryItem.module.css';
 // import PropTypes from 'prop-types';
 
 export const ImageGalleryItem = ({ smallImg, largeImg, onClick }) => {
   return (
-    <li className="gallery-item">
-      <img src={smallImg} onClick={() => onClick(largeImg)} alt="" />
+    <li className={css.ImageGalleryItem}>
+      <img
+        className={css.ImageGalleryItem_image}
+        src={smallImg}
+        onClick={() => onClick(largeImg)}
+        alt=""
+      />
     </li>
   );
 };
