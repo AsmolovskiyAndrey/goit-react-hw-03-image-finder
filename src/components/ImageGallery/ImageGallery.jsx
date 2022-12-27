@@ -2,7 +2,7 @@
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import css from './ImageGallery.module.css';
 
-export const ImageGallery = ({ galleryItems }) => {
+export const ImageGallery = ({ galleryItems, ...otherProps }) => {
   return (
     <ul className={css.ImageGallery}>
       {galleryItems.map(({ id, webformatURL, largeImageURL }) => (
@@ -10,6 +10,7 @@ export const ImageGallery = ({ galleryItems }) => {
           key={id}
           smallImg={webformatURL}
           largeImg={largeImageURL}
+          {...otherProps}
         />
       ))}
     </ul>

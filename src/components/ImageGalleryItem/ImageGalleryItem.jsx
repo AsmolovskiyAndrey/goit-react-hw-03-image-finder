@@ -1,6 +1,12 @@
 import React from 'react';
 import css from './ImageGalleryItem.module.css';
+import { Modal } from 'components/Modal/Modal';
 // import PropTypes from 'prop-types';
+
+// const asd = largeImg => {
+//   console.log('asd');
+//   console.log(largeImg);
+// };
 
 export const ImageGalleryItem = ({ smallImg, largeImg, onClick }) => {
   return (
@@ -9,6 +15,7 @@ export const ImageGalleryItem = ({ smallImg, largeImg, onClick }) => {
         className={css.ImageGalleryItem_image}
         src={smallImg}
         onClick={() => onClick(largeImg)}
+        // onClick={() => asd(largeImg)}
         alt=""
       />
     </li>
