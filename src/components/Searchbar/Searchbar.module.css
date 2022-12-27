@@ -1,40 +1,3 @@
-html {
-  box-sizing: border-box;
-  width: 100vw;
-  overflow-x: hidden;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-  color: #212121;
-  background-color: #fff;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-/*
- * Стили компонента App
- */
-.App {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 16px;
-  padding-bottom: 24px;
-}
 
 /*
  * Стили компонента Searchbar
@@ -71,7 +34,7 @@ img {
   overflow: hidden;
 }
 
-.SearchForm-button {
+.SearchForm_button {
   display: inline-block;
   width: 48px;
   height: 48px;
@@ -86,11 +49,11 @@ img {
   outline: none;
 }
 
-.SearchForm-button:hover {
+.SearchForm_button:hover {
   opacity: 1;
 }
 
-.SearchForm-button-label {
+.SearchForm_button_label {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -102,7 +65,7 @@ img {
   border: 0;
 }
 
-.SearchForm-input {
+.SearchForm_input {
   display: inline-block;
   width: 100%;
   font: inherit;
@@ -113,7 +76,7 @@ img {
   padding-right: 4px;
 }
 
-.SearchForm-input::placeholder {
+.SearchForm_input::placeholder {
   font: inherit;
   font-size: 18px;
 }
