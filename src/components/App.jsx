@@ -62,7 +62,6 @@ export class App extends Component {
   openModal = img => {
     this.setState({ modalImg: img });
     this.setState({ modal: true });
-    // console.log(img);
   };
 
   closeModal = () => {
